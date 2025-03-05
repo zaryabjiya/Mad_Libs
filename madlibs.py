@@ -35,4 +35,4 @@ if st.button("Create a story! 🚀"):
     else:
         st.warning("⚠️ Please fill in all the blanks to create your story!")    
 
-st.markdown("<div style='margin-top:50px; text-align:center; font-size:14px; background-color: #D2B48C;  color:#444; font-weight:bold;'>Developed by Zaryab Irfan 🚀</div>", unsafe_allow_html=True)
+st.markdown("<div style='margin-top:50px; text-align:center; font-size:16px; background-color:#222; color:#fff; font-weight:bold; padding:10px; border-radius:8px; box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);'>Developed by Zaryab Irfan 🚀</div>", unsafe_allow_html=True)
