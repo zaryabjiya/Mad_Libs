@@ -4,7 +4,7 @@ import random
 # Set up the page configuration
 st.set_page_config(page_title="Adventure Story Generator", page_icon="🧙‍♂️", layout="centered")
 
-# Custom CSS for styling
+# Custom CSS for better styling
 st.markdown("""
 <style>
     body {
@@ -65,10 +65,21 @@ actions = [
     "turned invisible and sneaked past the enemy 👻",
     "fought bravely with unmatched power ⚔️🔥",
     "solved an ancient puzzle and unlocked hidden secrets 🏆",
-    "tamed a wild beast and rode it like a champion 🐉🏇"
+    "tamed a wild beast and rode it like a champion 🐉🏇",
+    "discovered a hidden portal and traveled to another dimension 🌌",
+    "used magic to summon an army of tiny helpers 🧚‍♂️"
 ]
-
 random_action = random.choice(actions)
+
+# Random story twists
+twists = [
+    "But suddenly, the sky turned dark, and a hidden enemy emerged! ☠️",
+    "Just when {name} thought it was over, the ground started shaking! 🌍⚡",
+    "A mysterious voice whispered a secret that changed everything... 🤫",
+    "The magical object started glowing, revealing a hidden message! ✨📜",
+    "A portal opened, sucking {name} into another realm! 🌪️",
+]
+random_twist = random.choice(twists)
 
 # Generate story button
 if st.button("Create My Adventure! 🚀"):
@@ -78,17 +89,22 @@ if st.button("Create My Adventure! 🚀"):
         
         One day, {name} woke up and discovered an incredible power: *{superpower}!* 🦸‍♂️⚡  
         Determined to test this power, {name} traveled to the *{place}*. 🌳🏰  
-
+        
         Suddenly, a *{creature}* appeared! 😱 It roared, making a loud *'{sound}!'* 🔊  
         Without hesitation, {name} used their *{superpower}* and *{random_action}*! 💨⚡  
-
+        
         The {creature} was so *{emotion}* that it fled instantly! 🏃‍♂️💨  
-        Victorious, {name} picked up their *{object}, smiled, and became the **Legend of {place}!* 🏆🔥
+        Victorious, {name} picked up their *{object}*, smiled, and became the **Legend of {place}!* 🏆🔥  
+        
+        {random_twist.replace('{name}', name)}
         """
         
         st.success("Your Adventure is Ready! 🎉")
         st.markdown(story)
-    
+        
+        # Restart button
+        if st.button("Restart 🔄"):
+            st.experimental_rerun()
     else:
         st.warning("⚠️ Please fill in all the blanks to create your story!")
 
