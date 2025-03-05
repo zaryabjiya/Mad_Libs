@@ -1,48 +1,96 @@
+import streamlit as st
 import random
 
-# Welcome message
-print("\033[1;35m🔥 Welcome to Zaryab's Epic Mad Libs Adventure! 🔥\033[0m\n")
-print("\033[1;34m😆 Fill in the blanks and create your own hilarious story! 🎭✨\033[0m\n")
+# Set up the page configuration
+st.set_page_config(page_title="Adventure Story Generator", page_icon="🧙‍♂️", layout="centered")
 
-# Taking user inputs
-name = input("\033[1;32m🔹 Enter your name: \033[0m")
-superpower = input("\033[1;33m⚡ Enter a superpower: \033[0m")
-weird_creature = input("\033[1;36m🐉 Enter a weird creature: \033[0m")
-place = input("\033[1;31m📍 Enter a magical place: \033[0m")
-food = input("\033[1;35m🍕 Enter your favorite food: \033[0m")
-object = input("\033[1;34m🎩 Enter a random object: \033[0m")
-emotion = input("\033[1;32m😊 Enter an emotion: \033[0m")
-sound = input("\033[1;33m🔊 Enter a funny sound (like 'Boom' or 'Zing'): \033[0m")
+# Custom CSS for styling
+st.markdown("""
+<style>
+    body {
+        background-color: #F5F5DC;
+        color: #333;
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+    }
+    .stTextInput > div > div > input {
+        background: white;
+        color: #333;
+        border: 2px solid #8B4513;
+        border-radius: 10px;
+        padding: 12px;
+        font-size: 16px;
+    }
+    .stButton button {
+        background-color: #8B4513;
+        color: white;
+        font-size: 18px;
+        border-radius: 10px;
+        padding: 12px 20px;
+        border: none;
+        transition: 0.3s;
+    }
+    .stButton button:hover {
+        background-color: #5D4037;
+    }
+    .footer {
+        margin-top: 50px;
+        text-align: center;
+        font-size: 14px;
+        color: #444;
+        font-weight: bold;
+        padding: 10px;
+        background: #D2B48C;
+        border-radius: 5px;
+    }
+</style>
+""", unsafe_allow_html=True)
 
-# Random action choices
+# Title and introduction
+st.title("🧙‍♂️ Adventure Story Generator")
+st.write("Fill in the blanks and create your own *magical adventure!* ✨")
+
+# Input fields
+name = st.text_input("Enter your name:", help="Your hero name in the story")
+superpower = st.text_input("Enter a superpower:", help="Any magical ability")
+creature = st.text_input("Enter a mythical creature:", help="Like dragon, unicorn, etc.")
+place = st.text_input("Enter a mysterious place:", help="Like enchanted forest, haunted castle")
+object = st.text_input("Enter a magical object:", help="Like sword, wand, shield")
+emotion = st.text_input("Enter an emotion:", help="Like happy, scared, excited")
+sound = st.text_input("Enter a funny sound:", help="Like BOOM, ZAP, KABOOM")
+
+# Random actions
 actions = [
-    "started breakdancing like a robot 🤖💃",
-    "flew high like a rocket 🚀🔥",
-    "turned invisible and pranked everyone 👻😂",
-    "sang a rap song about coding 🎤🎶",
-    "juggled flaming swords like a pro 🔥⚔️"
+    "flew across the sky like a shooting star 🌠",
+    "turned invisible and sneaked past the enemy 👻",
+    "fought bravely with unmatched power ⚔️🔥",
+    "solved an ancient puzzle and unlocked hidden secrets 🏆",
+    "tamed a wild beast and rode it like a champion 🐉🏇"
 ]
 
 random_action = random.choice(actions)
 
-# Creating the story
-story = f"""
-\033[1;35m✨🌟 YOUR LEGENDARY MAD LIBS STORY 🌟✨\033[0m
+# Generate story button
+if st.button("Create My Adventure! 🚀"):
+    if name and superpower and creature and place and object and emotion and sound:
+        story = f"""
+        🌟✨ *THE LEGEND OF {name.upper()}* ✨🌟  
+        
+        One day, {name} woke up and discovered an incredible power: *{superpower}!* 🦸‍♂️⚡  
+        Determined to test this power, {name} traveled to the *{place}*. 🌳🏰  
 
-📌 One fine day, {name} 😎 woke up with a mysterious power: {superpower}! 🦸‍♂️💥
-   Excited, {name} traveled to {place} 🏰 to test it out.
+        Suddenly, a *{creature}* appeared! 😱 It roared, making a loud *'{sound}!'* 🔊  
+        Without hesitation, {name} used their *{superpower}* and *{random_action}*! 💨⚡  
 
-🐉 Suddenly, a giant {weird_creature} appeared, blocking the way! 😱
-   Without hesitation, {name} used {superpower} and {random_action.upper()} 🌀💨.
+        The {creature} was so *{emotion}* that it fled instantly! 🏃‍♂️💨  
+        Victorious, {name} picked up their *{object}, smiled, and became the **Legend of {place}!* 🏆🔥
+        """
+        
+        st.success("Your Adventure is Ready! 🎉")
+        st.markdown(story)
+    
+    else:
+        st.warning("⚠️ Please fill in all the blanks to create your story!")
 
-🎉 The {weird_creature} was so {emotion} 🤩 that it made a loud '{sound}!' 🔊 and ran away!
-
-🍛 After this crazy adventure, {name} sat down, picked up a {object} 🎩, and enjoyed {food} 🤤.
-
-🏆🔥 And that, my friend, is how {name} became the Hero of {place}! 🎭🎉
-"""
-
-# Printing the final story
-print("\n" + "="*60)
-print(story)
-print("="*60 + "\n")
+# Footer
+st.markdown("<div class='footer'>Developed by Zaryab Irfan 🚀</div>", unsafe_allow_html=True)
