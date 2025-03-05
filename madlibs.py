@@ -29,7 +29,10 @@ if st.button("Create a story! 🚀"):
 
         st.success("Your Mad Libs Adventure is Ready! 🎉")
         st.markdown(story)
+
+        if st.button("Restart 🔄"):
+            st.experimental_rerun()
     else:
         st.warning("⚠️ Please fill in all the blanks to create your story!")    
 
-st.markdown("<div style='margin-top:50px; text-align:center; font-size:14px; color:#444; font-weight:bold;'>Developed by Zaryab Irfan 🚀</div>", unsafe_allow_html=True)
+st.markdown("<div style='margin-top:50px; text-align:center; font-size:14px; background-color: #D2B48C;  color:#444; font-weight:bold;'>Developed by Zaryab Irfan 🚀</div>", unsafe_allow_html=True)
